@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,20 +7,21 @@
 <body>
 
 <?php
-include 'functions.php';
+include 'clases.php';
 ?>
 
 <h2>Here is Guest's List:</h2>
 
 <ul>
 	<?php
-	$arr_of_records = Allrecords(); //Function from 'functions.php'
+	$arr_of_records = $book -> getData();
 	foreach ($arr_of_records as $key => $value) {
 		?>
 
 	<li><?php echo $value; ?></li>
 	<?php
 	}
+
 	 ?>
 </ul>
 
