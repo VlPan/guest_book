@@ -1,36 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>GuestBook</title>
-</head>
-<body>
 
-<?php
-include 'clases.php';
-?>
-
-<h2>Here is Guest's List:</h2>
-
-<ul>
 	<?php
-	$arr_of_records = $book -> getData();
-	foreach ($arr_of_records as $key => $value) {
-		?>
 
-	<li><?php echo $value; ?></li>
-	<?php
-	}
+	require __DIR__."/clases/Views.php";
+	require __DIR__ . "/clases/GuestBook.php";
+	$view = new View(__DIR__. "/templates/index.php");
+	$book = new GuestBook(__DIR__ . "/guest_book.txt");
+	$arr_of_records = $view->assign('arr_of_records',$book -> getData());
 
-	 ?>
-</ul>
-
-<form calss="myForm" enctype="multipart/form-data" method="POST" action="upload.php">
-	<input type="text" name="guest_name">
-	<input type="file" name="file_to_upload">
-	<input type="submit" name="submit" value="submit">
-</form>
-
-
-</body>
-</html>
+	$view->display();
